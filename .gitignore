@@ -1,0 +1,5 @@
+node_modules/
+*.log
+.sass-cache/
+app/assets/stylesheets/neat
+app/assets/javascripts/bourbon

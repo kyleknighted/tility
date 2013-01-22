@@ -1,0 +1,18 @@
+{
+  "name": "able_few_tility",
+  "preferGlobal": "true",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "grunt": "git://github.com/gruntjs/grunt.git#master",
+    "grunt-contrib-watch":    "git://github.com/gruntjs/grunt-contrib-watch.git#master",
+    "grunt-contrib-coffee":   "git://github.com/gruntjs/grunt-contrib-coffee.git#master",
+    "grunt-contrib-sass":     "git://github.com/gruntjs/grunt-contrib-sass.git#master",
+    "grunt-contrib-uglify":   "git://github.com/gruntjs/grunt-contrib-uglify.git#master",
+    "grunt-contrib-connect":  "git://github.com/gruntjs/grunt-contrib-connect.git#master",
+    "grunt-reload":           "git://github.com/webxl/grunt-reload.git#master"
+  },
+  "scripts": {
+    "start": "grunt run"
+  }
+}
