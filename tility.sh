@@ -9,6 +9,10 @@ echo "--------------------";
 bundle install
 
 if [-z "$(which npm)"]; then
+  echo "Looks like you don't have NPM installed.";
+  echo "Install Node.js - http://nodejs.org/";
+  exit 1
+else
   echo "-------------------------------";
   echo "Load from Node Packaged Modules";
   echo "-------------------------------";
@@ -27,8 +31,4 @@ if [-z "$(which npm)"]; then
   neat install
 
   echo "To run your server, just run: grunt run";
-else
-  echo "Looks like you don't have NPM installed.";
-  echo "Install Node.js - http://nodejs.org/";
-  exit 1
 fi

@@ -2,11 +2,9 @@
 
 ## Install
 
- * [Node.js](http://nodejs.org/)
- * `gem install bundler`
- * `bundle install`
- * `npm install`
- * `cd app/assets/stylesheets`
- * `bourbon install`
- * `neat install`
- * `grunt run` or `npm start`
+ * `chmod +x tiltity.sh`
+ * `./tility.sh`
+
+## Run Server
+
+`grunt run`
