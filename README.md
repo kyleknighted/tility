@@ -2,8 +2,7 @@
 
 ## Install
 
- * `chmod +x tiltity.sh`
- * `./tility.sh`
+`./tility.sh`
 
 ## Run Server
 
