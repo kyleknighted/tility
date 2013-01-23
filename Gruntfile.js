@@ -33,7 +33,8 @@ module.exports = function (grunt) {
           lineNumbers: true
         },
         files: {
-          './public/stylesheets/default.css': './app/assets/stylesheets/default.scss'
+          './public/stylesheets/default.css': './app/assets/stylesheets/default.scss',
+          './public/stylesheets/ie.css': './app/assets/stylesheets/ie.scss'
         }
       }
     },
@@ -45,8 +46,8 @@ module.exports = function (grunt) {
       }
     },
     watch: {
-      files: ['./public/*.html', './app/assets/stylesheets/default.scss', './app/assets/stylesheets/default.scss'],
-      tasks: ['sass', 'coffee', 'reload']
+      files: ['./public/*.html', './app/assets/stylesheets/*.scss', './app/assets/stylesheets/*.scss'],
+      tasks: ['sass', 'coffee']
     }
   });
 
@@ -56,6 +57,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-reload');
   grunt.registerTask('run', ['connect', 'coffee', 'sass', 'reload', 'watch']);
+  grunt.registerTask('precomp', ['coffee', 'sass', 'watch']);
   // grunt.registerTask('precomp', ['coffee','sass']);
 
 };
