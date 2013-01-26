@@ -36,7 +36,8 @@ if(env === 'scratch') {
 } else if(env === 'rails') {
 
   // build default view
-  cp('lib/tility/index.'+env+'.erb', 'app/views/layouts/application.html.erb');
+  mkdir('app/assets/views/layouts/');
+  cp('lib/tility/index.'+env+'.erb', 'app/assets/views/layouts/application.html.erb');
 
   // init rails in current directory
   if (exec('rails new . --skip-bundle -q -s -d mysql').code !== 0) {
@@ -51,13 +52,13 @@ if(env === 'scratch') {
   mv('app/assets/stylesheets/default.scss', 'app/assets/stylesheets/default.css.scss');
 
   // no longer need these in rails
-  rm('-rf', '/public/javascripts/');
-  rm('-rf', '/public/stylesheets/');
-  rm('-rf', '/public/images/');
-  rm('/app/assets/javascripts/default.js');
+  rm('-rf', 'public/javascripts/');
+  rm('-rf', 'public/stylesheets/');
+  rm('-rf', 'public/images/');
+  rm('app/assets/javascripts/default.js');
 
   // moving selectivzr to be a vendor library
-  mv('public/javascripts/selectizr.min.js', 'vendor/assets/javascripts/selectizr.min.js');
+  mv('public/javascripts/selectizr-min.js', 'vendor/assets/javascripts/selectizr-min.js');
 
 } else if(env === 'node') {
   echo(("---------------------------------------").red);
