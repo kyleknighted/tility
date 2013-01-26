@@ -6,6 +6,7 @@ app/assets/stylesheets/neat
 app/assets/stylesheets/bourbon
 Gruntfile.js
 Gemfile.lock
+*.DS_Store
 
 #Rails .gitignore
 /.bundle
