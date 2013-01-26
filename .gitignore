@@ -6,3 +6,8 @@ app/assets/stylesheets/neat
 app/assets/stylesheets/bourbon
 Gruntfile.js
 Gemfile.lock
+
+#Rails .gitignore
+/.bundle
+/db/*.sqlite3
+/tmp
