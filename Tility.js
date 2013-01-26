@@ -52,7 +52,8 @@ if(env === 'scratch') {
   mv('app/assets/stylesheets/default.scss', 'app/assets/stylesheets/default.css.scss');
 
   // moving selectivzr to be a vendor library
-  mv('public/javascripts/selectizr-min.js', 'vendor/assets/javascripts/selectizr-min.js');
+  mkdir('-p', 'vendor/assets/javascripts/');
+  mv('public/javascripts/selectivizr-min.js', 'vendor/assets/javascripts/selectivizr-min.js');
 
   // no longer need these in rails
   rm('-rf', 'public/javascripts/');
