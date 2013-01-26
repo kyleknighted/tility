@@ -33,6 +33,14 @@ if(env === 'scratch') {
   // build default view
   cp('lib/tility/index.'+env+'.html', 'index.html');
 
+  // bring in Gruntfile.js for env
+  cp('lib/tility/Gruntfile.'+env+'.js', 'Gruntfile.js');
+
+  // If you get this far, you're just about golden!
+  echo(("---------------------------------------").green);
+  echo(("To run your server, just run: grunt run").green);
+  echo(("---------------------------------------").green);
+
 } else if(env === 'rails') {
 
   // build default view
@@ -44,6 +52,9 @@ if(env === 'scratch') {
     echo('Error: Rails init failed.');
     exit(1);
   }
+
+  // build default view
+  cp('lib/tility/index.'+env+'.erb', 'app/views/layouts/application.html.erb');
 
   // remove tree from sprockets and only include default css
   sed('-i', ' *= require_tree .', ' *= require "default"', 'app/assets/stylesheets/application.css');
@@ -61,6 +72,11 @@ if(env === 'scratch') {
   rm('-rf', 'public/images/');
   rm('app/assets/javascripts/default.js');
 
+  // If you get this far, you're just about golden!
+  echo(("------------------------------------------").green);
+  echo(("To run your server, just run: rails server").green);
+  echo(("------------------------------------------").green);
+
 } else if(env === 'node') {
   echo(("---------------------------------------").red);
   echo((("ERROR!").bold + (" Still working on this environment.")).red);
@@ -72,9 +88,6 @@ if(env === 'scratch') {
   echo(("---------------------------------------").red);
   exit(1);
 }
-
-// bring in correct Gruntfile.js for env
-cp('lib/tility/Gruntfile.'+env+'.js', 'Gruntfile.js');
 
 // change directory for Bourbon and Neat installs
 cd('app/assets/stylesheets');
@@ -88,8 +101,3 @@ if (exec('neat install').code !== 0) {
   echo('Error: Neat install failed.');
   exit(1);
 }
-
-// If you get this far, you're just about golden!
-echo(("---------------------------------------").green);
-echo(("To run your server, just run: grunt run").green);
-echo(("---------------------------------------").green);

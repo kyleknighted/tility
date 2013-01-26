@@ -17,7 +17,7 @@
     "grunt-reload": "git://github.com/webxl/grunt-reload.git#master"
   },
   "scripts": {
-    "start": "shjs ./Tility.js"
+    "postinstall": "shjs ./Tility.js"
   },
   "config": {
     "_comment": "options include: 'scratch', 'rails', 'node'",
