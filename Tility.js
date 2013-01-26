@@ -36,7 +36,7 @@ if(env === 'scratch') {
 } else if(env === 'rails') {
 
   // build default view
-  mkdir('app/assets/views/layouts/');
+  mkdir('-p', 'app/assets/views/layouts/');
   cp('lib/tility/index.'+env+'.erb', 'app/assets/views/layouts/application.html.erb');
 
   // init rails in current directory
@@ -51,14 +51,14 @@ if(env === 'scratch') {
   // add .css extension to default.scss for sprockets
   mv('app/assets/stylesheets/default.scss', 'app/assets/stylesheets/default.css.scss');
 
+  // moving selectivzr to be a vendor library
+  mv('public/javascripts/selectizr-min.js', 'vendor/assets/javascripts/selectizr-min.js');
+
   // no longer need these in rails
   rm('-rf', 'public/javascripts/');
   rm('-rf', 'public/stylesheets/');
   rm('-rf', 'public/images/');
   rm('app/assets/javascripts/default.js');
-
-  // moving selectivzr to be a vendor library
-  mv('public/javascripts/selectizr-min.js', 'vendor/assets/javascripts/selectizr-min.js');
 
 } else if(env === 'node') {
   echo(("---------------------------------------").red);
