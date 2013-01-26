@@ -2,8 +2,8 @@
 
 ## Install
 
-`npm install` - If you don't have Node.js installed, you will need to install that before NPM exists   
 Edit `package.json` file to include your application name and version number.    
+`npm install` - If you don't have Node.js installed, you will need to install that before NPM exists   
 `npm start`
 
 ## Run Server
