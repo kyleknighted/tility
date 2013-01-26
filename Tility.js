@@ -50,7 +50,7 @@ if(env === 'scratch') {
 } else if(env === 'rails') {
 
   // init rails in current directory
-  if (exec('rails new .').code !== 0) {
+  if (exec('rails new . --skip-bundle -q -s -d mysql').code !== 0) {
     echo('Error: Rails init failed.');
     exit(1);
   }
