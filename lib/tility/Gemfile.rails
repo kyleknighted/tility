@@ -11,6 +11,7 @@ group :assets do
   gem 'bourbon'
   gem 'neat'
   gem 'rack-livereload'
+  gem 'guard-livereload'
 end
 
 gem 'jquery-rails'

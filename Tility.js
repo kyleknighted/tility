@@ -72,12 +72,18 @@ if(env === 'scratch') {
   rm('-rf', 'public/images/');
   rm('app/assets/javascripts/default.js');
 
+  // install livereload for rails
+  exec('guard init livereload');
+
+  // TODO: setup configuration for livereload (rack-livereload | guard-livereload)
+
   // If you get this far, you're just about golden!
   echo(("------------------------------------------").green);
   echo(("To run your server, just run: rails server").green);
   echo(("------------------------------------------").green);
 
 } else if(env === 'node') {
+  // grunt watch in node - http://cobbweb.me/blog/2012/06/07/using-grunt-dot-js-to-build-your-frontend-in-a-node-dot-js-slash-express-dot-js-app/
   echo(("---------------------------------------").red);
   echo((("ERROR!").bold + (" Still working on this environment.")).red);
   echo(("---------------------------------------").red);
