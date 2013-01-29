@@ -66,19 +66,42 @@ if(env === 'scratch') {
   mkdir('-p', 'vendor/assets/javascripts/');
   mv('public/javascripts/selectivizr-min.js', 'vendor/assets/javascripts/selectivizr-min.js');
 
+  // enable default route
+  sed('-i', '# root :to => \'welcome#index\'', 'root :to => \'main#index\'');
+
+  // create default view
+  mkdir('-p', 'views/main');
+  cd('/views/main');
+  exec('touch index.html.erb');
+  cd(projRoot);
+
+  // init guardfile for livereload
+  if( exec('guard init livereload').code !== 0) {
+    echo('Error: Guard unable to install.');
+    exit(1);
+  }
+
+  // add rack livereload
+  sed('-i', /^end$/, "  config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)\nend", 'config/environments/development.rb');
+
+  // create default main controller
+  if( exec('rails generate controller Main').code !== 0 ) {
+    echo('Error: unable to generate controller');
+    exit(1);
+  }
+
+  // add method for default view in controller
+  sed('-i', 'class MainController < ApplicationController', "class MainController < ApplicationController\n  def index\n  end\n", 'app/assets/main_controller.rb');
+
   // no longer need these in rails
   rm('-rf', 'public/javascripts/');
   rm('-rf', 'public/stylesheets/');
   rm('-rf', 'public/images/');
   rm('app/assets/javascripts/default.js');
 
-  // install livereload for rails
-  exec('guard init livereload');
-
-  // TODO: setup configuration for livereload (rack-livereload | guard-livereload)
-
   // If you get this far, you're just about golden!
   echo(("------------------------------------------").green);
+  echo(("To run your server, just run: guard").green);
   echo(("To run your server, just run: rails server").green);
   echo(("------------------------------------------").green);
 

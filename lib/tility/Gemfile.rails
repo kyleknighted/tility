@@ -12,6 +12,7 @@ group :assets do
   gem 'neat'
   gem 'rack-livereload'
   gem 'guard-livereload'
+  gem 'rb-fsevent', '~> 0.9.1'
 end
 
 gem 'jquery-rails'

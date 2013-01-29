@@ -14,3 +14,5 @@ Edit `package.json` file to include your application name and version number.
 ## Changing Environment in NPM
 
 `npm config set few_tility:env 'new_env_name'`
+
+## [Live Reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en)
