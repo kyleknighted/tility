@@ -79,7 +79,7 @@ if(env === 'scratch') {
   }
 
   // add rack livereload
-  sed(/^end/, "  config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)\nend", 'config/environments/development.rb');
+  sed(/^end$/, "  config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)\nend", 'config/environments/development.rb');
 
   // create default main controller
   if( exec('rails generate controller Main').code !== 0 ) {
@@ -94,7 +94,7 @@ if(env === 'scratch') {
   cd(projRoot);
 
   // add method for default view in controller
-  sed('-i', 'class MainController < ApplicationController', "class MainController < ApplicationController\n  def index\n  end\n", 'app/controllers/main_controller.rb');
+  sed('-i', 'class MainController < ApplicationController', "class MainController < ApplicationController\n  def index\n  end", 'app/controllers/main_controller.rb');
 
   // no longer need these in rails
   rm('-rf', 'public/javascripts/');
