@@ -54,7 +54,7 @@ if(env === 'scratch') {
   }
 
   // build default view
-  cp('lib/tility/index.'+env+'.erb', 'app/views/layouts/application.html.erb');
+  cp('-f', 'lib/tility/index.'+env+'.erb', 'app/views/layouts/application.html.erb');
 
   // remove tree from sprockets and only include default css
   sed('-i', ' *= require_tree .', ' *= require "default"', 'app/assets/stylesheets/application.css');
@@ -67,11 +67,11 @@ if(env === 'scratch') {
   mv('public/javascripts/selectivizr-min.js', 'vendor/assets/javascripts/selectivizr-min.js');
 
   // enable default route
-  sed('-i', '# root :to => \'welcome#index\'', 'root :to => \'main#index\'');
+  sed('-i', '# root :to => \'welcome#index\'', 'root :to => \'main#index\'', 'config/routes.rb');
 
   // create default view
   mkdir('-p', 'views/main');
-  cd('/views/main');
+  cd('views/main');
   exec('touch index.html.erb');
   cd(projRoot);
 
@@ -91,7 +91,7 @@ if(env === 'scratch') {
   }
 
   // add method for default view in controller
-  sed('-i', 'class MainController < ApplicationController', "class MainController < ApplicationController\n  def index\n  end\n", 'app/assets/main_controller.rb');
+  sed('-i', 'class MainController < ApplicationController', "class MainController < ApplicationController\n  def index\n  end\n", 'app/controllers/main_controller.rb');
 
   // no longer need these in rails
   rm('-rf', 'public/javascripts/');
