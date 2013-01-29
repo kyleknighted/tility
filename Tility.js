@@ -66,6 +66,9 @@ if(env === 'scratch') {
   mkdir('-p', 'vendor/assets/javascripts/');
   mv('public/javascripts/selectivizr-min.js', 'vendor/assets/javascripts/selectivizr-min.js');
 
+  // add method for default view in controller
+  sed('-i', 'class MainController < ApplicationController', "class MainController < ApplicationController\n  def index\n  end", 'app/controllers/main_controller.rb');
+
   // no longer need these in rails
   rm('-rf', 'public/javascripts/');
   rm('-rf', 'public/stylesheets/');
