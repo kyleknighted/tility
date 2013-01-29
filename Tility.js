@@ -53,7 +53,10 @@ if(env === 'scratch') {
     exit(1);
   }
 
-  // build default view
+  // remove rails index file
+  rm('public/index.html');
+
+  // build default layout
   cp('-f', 'lib/tility/index.'+env+'.erb', 'app/views/layouts/application.html.erb');
 
   // remove tree from sprockets and only include default css
@@ -71,7 +74,7 @@ if(env === 'scratch') {
 
   // create default view
   mkdir('-p', 'views/main');
-  cd('views/main');
+  cd('app/views/main');
   exec('touch index.html.erb');
   cd(projRoot);
 
