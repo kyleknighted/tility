@@ -48,13 +48,10 @@ if(env === 'scratch') {
   cp('lib/tility/index.'+env+'.erb', 'app/assets/views/layouts/application.html.erb');
 
   // init rails in current directory
-  if (exec('rails new . --skip-bundle -q -s -d mysql').code !== 0) {
+  if (exec('rails new . --skip-bundle -q -s -d mysql -m lib/tility/template.rails.rb').code !== 0) {
     echo('Error: Rails init failed.');
     exit(1);
   }
-
-  // remove rails index file
-  rm('public/index.html');
 
   // build default layout
   cp('-f', 'lib/tility/index.'+env+'.erb', 'app/views/layouts/application.html.erb');
@@ -68,33 +65,6 @@ if(env === 'scratch') {
   // moving selectivzr to be a vendor library
   mkdir('-p', 'vendor/assets/javascripts/');
   mv('public/javascripts/selectivizr-min.js', 'vendor/assets/javascripts/selectivizr-min.js');
-
-  // enable default route
-  sed('-i', '# root :to => \'welcome#index\'', 'root :to => \'main#index\'', 'config/routes.rb');
-
-  // init guardfile for livereload
-  if( exec('guard init livereload').code !== 0) {
-    echo('Error: Guard unable to install.');
-    exit(1);
-  }
-
-  // add rack livereload
-  sed('-i', /^end/, '', 'config/environments/development.rb');
-
-  // create default main controller
-  if( exec('rails generate controller Main').code !== 0 ) {
-    echo('Error: unable to generate controller');
-    exit(1);
-  }
-
-  // create default view
-  mkdir('-p', 'views/main');
-  cd('app/views/main');
-  exec('touch index.html.erb');
-  cd(projRoot);
-
-  // add method for default view in controller
-  sed('-i', 'class MainController < ApplicationController', "class MainController < ApplicationController\n  def index\n  end", 'app/controllers/main_controller.rb');
 
   // no longer need these in rails
   rm('-rf', 'public/javascripts/');
