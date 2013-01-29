@@ -72,12 +72,6 @@ if(env === 'scratch') {
   // enable default route
   sed('-i', '# root :to => \'welcome#index\'', 'root :to => \'main#index\'', 'config/routes.rb');
 
-  // create default view
-  mkdir('-p', 'views/main');
-  cd('app/views/main');
-  exec('touch index.html.erb');
-  cd(projRoot);
-
   // init guardfile for livereload
   if( exec('guard init livereload').code !== 0) {
     echo('Error: Guard unable to install.');
@@ -92,6 +86,12 @@ if(env === 'scratch') {
     echo('Error: unable to generate controller');
     exit(1);
   }
+
+  // create default view
+  mkdir('-p', 'views/main');
+  cd('app/views/main');
+  exec('touch index.html.erb');
+  cd(projRoot);
 
   // add method for default view in controller
   sed('-i', 'class MainController < ApplicationController', "class MainController < ApplicationController\n  def index\n  end\n", 'app/controllers/main_controller.rb');
