@@ -79,7 +79,7 @@ if(env === 'scratch') {
   }
 
   // add rack livereload
-  sed('-i', /^end/, "  config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)\nend", 'config/environments/development.rb');
+  sed(/^end/, "  config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)\nend", 'config/environments/development.rb');
 
   // create default main controller
   if( exec('rails generate controller Main').code !== 0 ) {
