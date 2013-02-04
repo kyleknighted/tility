@@ -1,3 +1,4 @@
+# http://edgeguides.rubyonrails.org/rails_application_templates.html
 generate(:controller, "Main")
 route "root to: 'main#index'"
 rake("db:create")

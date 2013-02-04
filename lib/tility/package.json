@@ -1,0 +1,19 @@
+{
+  "name": "",
+  "preferGlobal": true,
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">= 0.8.18"
+  },
+  "devDependencies": {
+    "shelljs": "*",
+    "colors": "*",
+    "grunt": "git://github.com/gruntjs/grunt.git#master",
+    "grunt-contrib-watch": "git://github.com/gruntjs/grunt-contrib-watch.git#master",
+    "grunt-contrib-sass": "git://github.com/gruntjs/grunt-contrib-sass.git#master",
+    "grunt-contrib-uglify": "~0.1.1rc6",
+    "grunt-contrib-connect": "git://github.com/gruntjs/grunt-contrib-connect.git#master",
+    "grunt-reload": "git://github.com/webxl/grunt-reload.git#master"
+  }
+}

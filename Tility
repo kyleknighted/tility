@@ -1,0 +1,64 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+require('shelljs/global');
+require('colors');
+var program = require('commander');
+
+program
+  .version('0.0.3')
+  .usage('[options] <app-name>')
+  .parse(process.argv);
+
+// Define vars to use throughout
+var tilityDir, envList, env, appDir, projDir, defaultCmds, envCmds, build;
+
+envList = ['scratch', 'rails', 'node'];
+appDir = program.args[0];
+tilityDir = which('tility');
+
+// verify directory doesn't exist
+if (test('-d', appDir)) {
+  // directory exist, error out
+  echo(('ERROR: path already exists, please choose a new application name.').red);
+  process.stdin.destroy();
+}  else {
+  // directory doesn't exist, let's create it and move on!
+  mkdir(appDir);
+  // switch to app dir
+  cd(appDir);
+  // set as project root
+  projDir = pwd();
+
+  // let's find out which environment we're going to build
+  echo('Choose your environment:');
+  program.choose(envList, function(i){
+    env = envList[i];
+
+    // loads up default commands
+    defaultCmds = require(tilityDir + '/lib/tility/tility.default.js');
+
+    // run standard setup routine
+    defaultCmds.setup(tilityDir, projDir, env);
+
+    // load up environment build commands
+    envCmds = require(tilityDir + '/lib/tility/tility.' + env + '.js');
+
+    // launch build process
+    envCmds.build(tilityDir, projDir, appDir);
+
+    // run wrapup commands
+    defaultCmds.wrapup(projDir);
+
+    // output runtime directions
+    envCmds.output();
+
+    // finish install process
+    process.stdin.destroy();
+
+  });
+
+}
