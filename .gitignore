@@ -2,13 +2,5 @@ node_modules/
 *.log
 log/*
 .sass-cache/
-app/assets/stylesheets/neat
-app/assets/stylesheets/bourbon
-Gruntfile.js
 Gemfile.lock
 *.DS_Store
-
-#Rails .gitignore
-/.bundle
-/db/*.sqlite3
-/tmp

@@ -2,17 +2,20 @@
 
 ## Install
 
-Edit `.rvmrc` to include your project name : `Ex: rvm 1.9.3@app-name --create`
-Edit `package.json` file to include your application name and version number.    
-`npm install` - If you don't have Node.js installed, you will need to install that before NPM exists   
-`npm start`
+`/bin/sh install`
 
-## Run Server
+## Use
 
-`grunt run`
+  * `tility <app-name>`
+  * Choose an environment
+  * ????
+  * PROFIT!!!
 
-## Changing Environment in NPM
+### You Will Need...
 
-`npm config set few_tility:env 'new_env_name'`
+  * the latest [Node.JS](http://nodejs.org) installed (0.8.18 or later)  
+  * [Grunt CLI](https://github.com/gruntjs/grunt/wiki/Getting-started) installed (this is different than the original grunt.js)  
+  * RubyGems installed
+  * Ruby installed (if you try to create a Rails environment)
 
-## [Live Reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en)
+### [Live Reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en)
