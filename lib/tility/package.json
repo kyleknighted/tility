@@ -9,10 +9,12 @@
   "devDependencies": {
     "shelljs": "*",
     "colors": "*",
+    "grunt": "~0.4.0",
     "grunt-regarde": ">= 0.1.1",
-    "grunt-contrib-sass": ">= 0.2.1rc5",
+    "grunt-contrib-sass": "git://github.com/gruntjs/grunt-contrib-sass.git#master",
     "grunt-contrib-uglify": ">= 0.1.1rc6",
     "grunt-contrib-connect": ">= 0.1.1rc6",
-    "grunt-contrib-livereload": ">= 0.1.0rc8"
+    "grunt-contrib-livereload": ">= 0.1.0rc8",
+    "grunt-contrib-jshint": ">= 0.1.1rc6"
   }
 }
