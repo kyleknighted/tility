@@ -17,5 +17,4 @@
   * [Grunt CLI](https://github.com/gruntjs/grunt/wiki/Getting-started) installed (this is different than the original grunt.js)  
   * RubyGems installed
   * Ruby installed (if you try to create a Rails environment)
-
-### [Live Reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en)
+  * [Live Reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en)
