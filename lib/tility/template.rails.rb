@@ -19,5 +19,6 @@ inject_into_file 'app/controllers/main_controller.rb', :after => 'class MainCont
   <<-RUBY
 
     def index
-    end RUBY
+    end
+  RUBY
 end
