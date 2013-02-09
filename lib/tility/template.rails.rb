@@ -17,7 +17,7 @@ gsub_file 'app/assets/stylesheets/application.css', ' *= require_tree .', ' *= r
 
 inject_into_file 'app/controllers/main_controller.rb', :after => 'class MainController < ApplicationController' do
   <<-RUBY
+
     def index
-    end
-  RUBY
+    end RUBY
 end
