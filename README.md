@@ -6,7 +6,7 @@
 
 ## Use
 
-  * `tility <app-name>`
+  * `tility -n <app-name>`
   * Choose an environment
   * ????
   * PROFIT!!!
@@ -24,15 +24,15 @@
 ### Scratch
 
 This is a simple server and scratchpad development environment. It is fully loaded with options for installing Sass, LESS, or Stylus.  
-You are also able to choose from different mixin libraries depending on which preprocesser you chose. Including: 
-  * Bourbon
-    * Neat (optional)
-  * Compass
-    * Susy (optional)
-  * LESS Hat
-  * LESS Elements
-  * nib
-  * roots
+You are also able to choose from different mixin libraries depending on which preprocesser you chose. Including:  
+  * Bourbon  
+    * Neat ~~(optional)~~  
+  * ~~Compass~~  
+    * ~~Susy (optional)~~  
+  * ~~LESS Hat~~  
+  * ~~LESS Elements~~  
+  * ~~nib~~  
+  * ~~roots~~  
 
 Or, skip all the CSS preprocessor nonesense and just run with straight CSS and HTML.  
 You are also given the choice to install CoffeeScript as a JS preprocessor or stick with standard JS.
@@ -55,13 +55,19 @@ Once that's all set, you will need to load up `guard start -i` in one Terminal w
 
 ### Node.js
 
-Not yet implemented.
+Let's build a real-time app!
+
+It will provide you the same options as a Scratchpad application, and build you a multi-environment Node application complete with Express, Socket.IO, and Jade template engine.
+
+Run `npm start` to get the server started. It will watch the changes to any core files and reboot the server as needed, it will also watch any frontend files and LiveReload your page as changes are made.
+
+Load up `http://localhost:4000` and see your work!!
 
 ## License 
 
 (The MIT License)
 
-Copyright (c) 2009-2012 TJ Holowaychuk &lt;tj@vision-media.ca&gt;
+Copyright (c) 2013 Kyle Knight (@idpro) & The Able Few (@theablefew)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
