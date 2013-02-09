@@ -9,11 +9,12 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
 
-  <title>The Able Few Tility</title>
+  <title>APP_TITLE</title>
 
-  <link rel="stylesheet" href="stylesheets/default.css">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= csrf_meta_tags %>
   <!--[if lte IE 8]>
-  <link rel="stylesheet" href="stylesheets/ie.css">
+  <%= stylesheet_link_tag    "ie", :media => "all" %>
   <![endif]-->
 </head>
 <body>
@@ -21,13 +22,11 @@
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
   <![endif]-->
 
-  <!--
-    CONTENT GOES HERE
-  -->
+  <%= yield %>
 
-  <script data-main="javascripts/default" src="javascripts/require.js"></script>
+  <%= javascript_include_tag "application" %>
   <!--[if lte IE 8]>
-  <script src="javascripts/selectivzr-min.js"></script>
+  <%= javascript_include_tag "selectivizr-min" %>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">
     $(function(){
       CFInstall.check({
@@ -35,6 +34,7 @@
           destination: "http://www.example.com"
       });
     })
-    <![endif]-->
+  </script>
+  <![endif]-->
 </body>
 </html>

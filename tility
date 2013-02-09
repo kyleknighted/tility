@@ -52,7 +52,7 @@ if(program.new) {
       defaultCmds.setup(tilityDir, projDir, env);
 
       // load up environment build commands
-      envCmds = require(tilityDir + '/lib/tility/tility.' + env + '.js');
+      envCmds = require(tilityDir + '/lib/' + env + '/tility.js');
 
       // launch build process
       envCmds.build(tilityDir, projDir, appName);
