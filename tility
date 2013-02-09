@@ -12,14 +12,14 @@ program = require('commander');
 
 program
   .version('0.0.3')
-  .option('-i, --init', 'Initilaize a new application')
-  .option('-u, --upgrade', 'Upgrade Tility to latest version')
+  .option('-n, --new', 'Create a new application')
+  .option('-u, --update', 'Update Tility to latest version')
   .usage('[options] <app-name>')
   .parse(process.argv);
 
 tilityDir = '/usr/local/tility';
 
-if(program.init) {
+if(program.new) {
   // *********** INITIALIZE APP *********** //
   // Define vars to use throughout
   var envList, env, appName, projDir, defaultCmds, envCmds, build;
@@ -69,10 +69,10 @@ if(program.init) {
     });
 
   }
-} else if (program.upgrade) {
+} else if (program.update) {
   // *********** UPDATE TILITY *********** //
   cd(tilityDir);
-  exec('./upgrade');
+  exec('./update');
 } else {
   echo(('ERROR: unknown command.').red);
   process.stdin.destroy();
