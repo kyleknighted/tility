@@ -12,3 +12,11 @@ inside('app/views/main') do
 end
 
 environment 'config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)', env: 'development'
+
+gsub_file 'app/assets/stylesheets/application.css', ' *= require_tree .', ' *= require "default"'
+
+inject_into_file 'features/users/sign_in.feature', :after => 'class MainController < ApplicationController' do
+<<-RUBY
+  def index
+  end
+RUBY

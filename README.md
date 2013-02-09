@@ -45,11 +45,11 @@ Code until your heart is content, save as you work, and watch your browser refre
 
 So, you're wanting to create a full scale application and you chose to use the Ruby language? Awesome! 
 
-Rails has Sass built in as the default CSS preprocessor, so Tility will respect this decision to move forward. (Note: there are ways to use other preprocessor, but for now, you'll have to research that on your own.)
+Rails has Sass built in as the default CSS preprocessor, so Tility will respect this decision to move forward. _(**Note:** there are ways to use other preprocessor, but for now, you'll have to research that on your own.)_
 
 The only option it'll ask here is if you would like to use Bourbon, Bourbon/Neat, Compass, or Compass/Susy.
 
-CoffeeScript is also defaulted into Rails, so no options there. (Note: You don't have to use Sass or Coffee in your rails app, simply change the extension to .css or .js respectively)
+CoffeeScript is also defaulted into Rails, so no options there. _(**Note:** You don't have to use Sass or Coffee in your rails app, simply change the extension to .css or .js respectively)_
 
 Once that's all set, you will need to load up `guard` in one Terminal window and `rails server` in another. Now load your browser to `http://localhost:3000` and you're all set!
 
