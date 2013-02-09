@@ -1,5 +1,9 @@
 # The Able Few Tility
 
+Tility is a utility to help you quickly set up your development environment. I've always hated wasting time trying to remember all the little commands to just get an app to work. Also, sometimes that app is Rails and Node, other times I just need a quick test environment to build out some concept code in JS and CSS. This tool belt tries to help solve this issue. Hoping it'll help you skip the crap and get straight to the code.
+
+Happy Hacking!!
+
 ## Install
 
 `/bin/sh install`
