@@ -65,5 +65,9 @@ if [ "$UNAME" = "Darwin" ] ; then
   # add to $PATH
   mkdir -p "$PARENT/bin"
   rm -f "$PARENT/bin/tility"
-  ln -s "$TARGET/Tility" "$PARENT/bin/tility"
+  ln -s "$TARGET/bin/tility" "$PARENT/bin/tility"
+
+  # Install NPM Modules
+  cd "$TARGET"
+  npm install
 fi

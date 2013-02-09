@@ -1,13 +1,13 @@
 {
-  "name": "few_tility",
+  "name": "able_few_tility",
   "preferGlobal": true,
   "version": "0.0.3",
   "private": true,
   "engines": {
     "node": ">= 0.8.18"
   },
-  "dependencies": { "command": "*"},
-  "devDependencies": {
+  "dependencies": {
+    "command": "*",
     "shelljs": "*",
     "colors": "*"
   }
