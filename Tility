@@ -71,7 +71,8 @@ if(program.init) {
   }
 } else if (program.upgrade) {
   // *********** UPDATE TILITY *********** //
-  exec(tilityDir + './upgrade')
+  cd(tilityDir);
+  exec('./upgrade');
 } else {
   echo(('ERROR: unknown command.').red);
   process.stdin.destroy();
