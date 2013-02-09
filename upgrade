@@ -1,0 +1,12 @@
+TARGET="/usr/local/tility"
+PARENT="/usr/local"
+
+# make sure target exists and is directory
+mkdir -p "$TARGET" || true
+if [ ! -d "$TARGET" -o ! -w "$TARGET" ] ; then
+  echo "Tility doesn't seem to exist - make sure you have permission to write to $TARGET"
+  exit 1
+fi
+
+git --git-dir="$TARGET/.git" fetch
+git --git-dir="$TARGET/.git" --work-tree="$TARGET" merge origin/master

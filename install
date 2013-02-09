@@ -60,7 +60,7 @@ if [ "$UNAME" = "Darwin" ] ; then
   fi
 
   # git clone
-  git clone git@github.com:theablefew/tility.git "$PARENT/tility"
+  git clone git@github.com:theablefew/tility.git "$TARGET"
 
   # add to $PATH
   mkdir -p "$PARENT/bin"
