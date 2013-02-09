@@ -17,7 +17,7 @@ program
   .usage('[options] <app-name>')
   .parse(process.argv);
 
-tilityDir = which('tility');
+tilityDir = '/usr/local/tility';
 
 if(program.init) {
   // *********** INITIALIZE APP *********** //
