@@ -7,7 +7,7 @@
     "node": ">= 0.8.18"
   },
   "dependencies": {
-    "command": "*",
+    "commander": "*",
     "shelljs": "*",
     "colors": "*"
   }
