@@ -46,7 +46,7 @@ if(program.new) {
       env = envList[i];
 
       // loads up default commands
-      defaultCmds = require(tilityDir + '/lib/tility/tility.default.js');
+      defaultCmds = require(tilityDir + '/lib/tility.default.js');
 
       // run standard setup routine
       defaultCmds.setup(tilityDir, projDir, env);
