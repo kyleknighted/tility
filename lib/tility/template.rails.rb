@@ -31,7 +31,7 @@ gsub_file 'app/assets/stylesheets/application.css', ' *= require_tree .', ' *= r
 gsub_file 'Guardfile', 'guard \'livereload\' do', 'guard \'livereload\', :api_version => \'2.3\' do'
 
 # change default title to app name
-gsub_file 'app/views/layouts/application.html.erb', /APP_TITLE/, @app_name, :api_version => \'2.3\' do'
+gsub_file 'app/views/layouts/application.html.erb', /APP_TITLE/, @app_name
 
 # create default.js
 create_file "app/assets/javascripts/default.js", "// Your default javascript file\n"
