@@ -4,9 +4,11 @@
  * Module dependencies.
  */
 
+var program, tilityDir;
+
 require('shelljs/global');
 require('colors');
-var program = require('commander');
+program = require('commander');
 
 program
   .version('0.0.3')
@@ -15,16 +17,15 @@ program
   .usage('[options] <app-name>')
   .parse(process.argv);
 
-appCommand = program.args[0]
+tilityDir = which('tility');
 
 if(program.init) {
   // *********** INITIALIZE APP *********** //
   // Define vars to use throughout
-  var tilityDir, envList, env, appName, projDir, defaultCmds, envCmds, build;
+  var envList, env, appName, projDir, defaultCmds, envCmds, build;
 
   envList = ['scratch', 'rails', 'node'];
-  appName = program.args[1];
-  tilityDir = which('tility');
+  appName = program.args[0];
 
   // verify directory doesn't exist
   if (test('-d', appName)) {
