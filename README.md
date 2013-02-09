@@ -51,7 +51,7 @@ The only option it'll ask here is if you would like to use Bourbon, Bourbon/Neat
 
 CoffeeScript is also defaulted into Rails, so no options there. _(**Note:** You don't have to use Sass or Coffee in your rails app, simply change the extension to .css or .js respectively)_
 
-Once that's all set, you will need to load up `guard` in one Terminal window and `rails server` in another. Now load your browser to `http://localhost:3000` and you're all set!
+Once that's all set, you will need to load up `guard start -i` in one Terminal window and `rails server` in another. Now load your browser to `http://localhost:3000` and you're all set!
 
 ### Node.js
 
