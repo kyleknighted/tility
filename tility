@@ -19,63 +19,61 @@ program
 
 tilityDir = which('tility');
 
-console.log(tilityDir);
+if(program.init) {
+  // *********** INITIALIZE APP *********** //
+  // Define vars to use throughout
+  var envList, env, appName, projDir, defaultCmds, envCmds, build;
 
-// if(program.init) {
-//   // *********** INITIALIZE APP *********** //
-//   // Define vars to use throughout
-//   var envList, env, appName, projDir, defaultCmds, envCmds, build;
+  envList = ['scratch', 'rails', 'node'];
+  appName = program.args[0];
 
-//   envList = ['scratch', 'rails', 'node'];
-//   appName = program.args[0];
+  // verify directory doesn't exist
+  if (test('-d', appName)) {
+    // directory exist, error out
+    echo(('ERROR: path already exists, please choose a new application name.').red);
+    process.stdin.destroy();
+  }  else {
+    // directory doesn't exist, let's create it and move on!
+    mkdir(appName);
+    // switch to app dir
+    cd(appName);
+    // set as project root
+    projDir = pwd();
 
-//   // verify directory doesn't exist
-//   if (test('-d', appName)) {
-//     // directory exist, error out
-//     echo(('ERROR: path already exists, please choose a new application name.').red);
-//     process.stdin.destroy();
-//   }  else {
-//     // directory doesn't exist, let's create it and move on!
-//     mkdir(appName);
-//     // switch to app dir
-//     cd(appName);
-//     // set as project root
-//     projDir = pwd();
+    // let's find out which environment we're going to build
+    echo('Choose your environment:');
+    program.choose(envList, function(i){
+      env = envList[i];
 
-//     // let's find out which environment we're going to build
-//     echo('Choose your environment:');
-//     program.choose(envList, function(i){
-//       env = envList[i];
+      // loads up default commands
+      defaultCmds = require(tilityDir + '/lib/tility/tility.default.js');
 
-//       // loads up default commands
-//       defaultCmds = require(tilityDir + '/lib/tility/tility.default.js');
+      // run standard setup routine
+      defaultCmds.setup(tilityDir, projDir, env);
 
-//       // run standard setup routine
-//       defaultCmds.setup(tilityDir, projDir, env);
+      // load up environment build commands
+      envCmds = require(tilityDir + '/lib/tility/tility.' + env + '.js');
 
-//       // load up environment build commands
-//       envCmds = require(tilityDir + '/lib/tility/tility.' + env + '.js');
+      // launch build process
+      envCmds.build(tilityDir, projDir, appName);
 
-//       // launch build process
-//       envCmds.build(tilityDir, projDir, appName);
+      // run wrapup commands
+      defaultCmds.wrapup(projDir);
 
-//       // run wrapup commands
-//       defaultCmds.wrapup(projDir);
+      // output runtime directions
+      envCmds.output();
 
-//       // output runtime directions
-//       envCmds.output();
+      // finish install process
+      process.stdin.destroy();
 
-//       // finish install process
-//       process.stdin.destroy();
+    });
 
-//     });
-
-//   }
-// } else if (program.upgrade) {
-//   // *********** UPDATE TILITY *********** //
-//   cd(tilityDir);
-//   exec('./upgrade');
-// } else {
-//   echo(('ERROR: unknown command.').red);
-//   process.stdin.destroy();
-// }
+  }
+} else if (program.upgrade) {
+  // *********** UPDATE TILITY *********** //
+  cd(tilityDir);
+  exec('./upgrade');
+} else {
+  echo(('ERROR: unknown command.').red);
+  process.stdin.destroy();
+}
