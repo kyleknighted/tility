@@ -4,7 +4,7 @@
 ## know what shell the user has. Debian uses 'dash' for 'sh', for
 ## example.
 
-VERSION="0.0.3"
+VERSION="0.0.4"
 PKGVERSION="${VERSION}-1"
 
 UNAME=`uname`
@@ -12,6 +12,9 @@ if [ "$UNAME" != "Darwin" ] ; then
   echo "Sorry, this OS is not supported yet."
   exit 1
 fi
+
+# TODO: Test for all requirements before installing and alert and exit if all aren't met
+# TODO: Create awesome ASCII art
 
 ### OSX ###
 
