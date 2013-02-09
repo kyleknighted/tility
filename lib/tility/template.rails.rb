@@ -17,7 +17,6 @@ rake("db:migrate")
 run "rm public/index.html"
 
 # install guard and livereload for guard
-run "guard init"
 run "guard init livereload"
 
 # create default view
@@ -30,6 +29,9 @@ gsub_file 'app/assets/stylesheets/application.css', ' *= require_tree .', ' *= r
 
 # change guard-livereload default port
 gsub_file 'Guardfile', 'guard \'livereload\' do', 'guard \'livereload\', :api_version => \'2.3\' do'
+
+# change default title to app name
+gsub_file 'app/views/layouts/application.html.erb', \APP_TITLE\, @app_name, :api_version => \'2.3\' do'
 
 # create default.js
 create_file "app/assets/javascripts/default.js", "// Your default javascript file\n"
