@@ -1,0 +1,135 @@
+#!/usr/bin/env node
+
+// Define vars to use throughout
+var program, tilityDir, setupApp, buildApp, envList, env, projDir, defaultCmds,
+    envCmds, build, chooseCss, chooseCssLib, buildPackage, cssList, sassList, lessList;
+
+// Module dependencies.
+require('shelljs/global');
+require('colors');
+program = require('commander');
+
+program
+  .version('0.0.4')
+  .option('-n, --new <app-name>', 'Create a new application')
+  .option('-u, --update', 'Update Tility to latest version')
+  .usage('[options] <app-name>')
+  .parse(process.argv);
+
+// if (!program.args.length) program.help();
+
+// tilityDir = '/usr/local/bin/tility';
+tilityDir = '/Users/kknight/Sites/fewtility';
+
+if(program.new) {
+  // *********** INITIALIZE APP *********** //
+  envList   = ['scratch', 'rails', 'node'];
+  cssList   = ['Sass', 'LESS', 'CSS'];
+  sassList  = ['Bourbon', 'Bourbon w/ Neat', 'Compass', 'Compass w/ Susy', 'None'];
+  lessList  = ['LESS Hat', 'Less Elements', 'None'];
+
+  // verify directory doesn't exist
+  if (test('-d', program.new)) {
+    // directory exist, error out
+    echo(('ERROR: path already exists, please choose a new application name.').red);
+    process.stdin.destroy();
+  } else {
+    // directory doesn't exist, let's create it and move on!
+    mkdir(program.new);
+    // switch to app dir
+    cd(program.new);
+    // set as project root
+    projDir = pwd();
+
+    // let's find out which environment we're going to build
+    echo('Choose your environment:');
+    program.choose(envList, function(i){
+
+      // set environment
+      env = envList[i];
+      echo('Loading...');
+      setupApp();
+
+      if(env != 'rails') {
+        chooseCss();
+      } else {
+        buildApp();
+        // process.stdin.destroy();
+      }
+
+    });
+
+  }
+} else if (program.update) {
+  // *********** UPDATE TILITY *********** //
+  cd(tilityDir);
+  exec('./update');
+} else {
+  echo(('ERROR: unknown command.').red);
+  process.stdin.destroy();
+}
+
+setupApp = function(){
+  // loads up default commands
+  defaultCmds = require(tilityDir + '/lib/tility.default.js');
+
+  // run standard setup routine
+  defaultCmds.setup(tilityDir, projDir, env, program.new);
+}
+
+chooseCss = function() {
+  echo('Choose your favorite CSS flavor:');
+  program.choose(cssList, function(i){
+    chooseCssLib(cssList[i]);
+  });
+}
+
+chooseCssLib = function(css) {
+  if(css != 'CSS') {
+    echo('Choose your favorite Preprocessor Library:');
+  }
+  if(css === 'Sass') {
+    program.choose(sassList, function(i){
+      chooseJs(css, sassList[i]);
+    });
+  } else if(css === 'LESS') {
+    program.choose(lessList, function(i){
+      chooseJs(css, lessList[i]);
+    });
+  } else {
+    chooseJs('None', 'None');
+  }
+}
+
+chooseJs = function(css, cssLib) {
+  var js;
+  program.confirm('Include CoffeeScript? (y/n) ', function(ok) {
+    if(ok) {
+      js = 'Coffee';
+    } else {
+      js = 'None';
+    }
+
+    buildPackage = require(tilityDir + '/lib/buildPackage.js');
+    buildPackage.build(css, cssLib, js, projDir);
+
+    buildApp();
+  });
+}
+
+buildApp = function(){
+  // load up environment build commands
+  envCmds = require(tilityDir + '/lib/' + env + '/tility.js');
+
+  // launch build process
+  envCmds.build(tilityDir, projDir, program.new);
+
+  // run wrapup commands
+  defaultCmds.wrapup(projDir);
+
+  // output runtime directions
+  envCmds.output();
+
+  // Destory commander session
+  process.stdin.destroy();
+}

@@ -27,7 +27,7 @@ Happy Hacking!!
 
 ### Scratch
 
-This is a simple server and scratchpad development environment. It is fully loaded with options for installing Sass, LESS, or Stylus.  
+This is a simple server and scratchpad development environment. It is fully loaded with options for installing Sass or LESS.  
 You are also able to choose from different mixin libraries depending on which preprocesser you chose. Including:  
 
   * Bourbon  
@@ -36,8 +36,6 @@ You are also able to choose from different mixin libraries depending on which pr
     * ~~Susy (optional)~~  
   * ~~LESS Hat~~  
   * ~~LESS Elements~~  
-  * ~~nib~~  
-  * ~~roots~~  
 
 Or, skip all the CSS preprocessor nonesense and just run with straight CSS and HTML.  
 You are also given the choice to install CoffeeScript as a JS preprocessor or stick with standard JS.
