@@ -10,7 +10,7 @@ require('colors');
 program = require('commander');
 
 program
-  .version('0.0.4')
+  .version('0.0.5')
   .option('-n, --new <app-name>', 'Create a new application')
   .option('-u, --update', 'Update Tility to latest version')
   .usage('[options] <app-name>')

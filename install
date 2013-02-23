@@ -4,7 +4,7 @@
 ## know what shell the user has. Debian uses 'dash' for 'sh', for
 ## example.
 
-VERSION="0.0.4"
+VERSION="0.0.5"
 PKGVERSION="${VERSION}-1"
 
 UNAME=`uname`
@@ -62,7 +62,7 @@ if [ ! -d "$TARGET" -o ! -w "$TARGET" ] ; then
 fi
 
 # git clone
-git clone git@git.theablefew.com:the-able-few/tility.git "$TARGET"
+git clone git@github.com:idpro/tility.git "$TARGET"
 
 # add to $PATH
 mkdir -p "$PARENT/bin"
