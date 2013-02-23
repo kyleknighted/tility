@@ -1,6 +1,6 @@
 # The Able Few Tility
 
-Tility is a utility to help you quickly set up your development environment. I've always hated wasting time trying to remember all the little commands to just get an app to work. Also, sometimes that app is Rails and Node, other times I just need a quick test environment to build out some concept code in JS and CSS. This tool belt tries to help solve this issue. Hoping it'll help you skip the crap and get straight to the code.
+Tility is a command line utility to help you quickly set up your development environment. I've always hated wasting time trying to remember all the little commands to just get an app to work. Also, sometimes that app is Rails and Node, other times I just need a quick test environment to build out some concept code in JS and CSS. This tool belt tries to help solve this issue. Hoping it'll help you skip the crap and get straight to the code.
 
 Happy Hacking!!
 
@@ -31,9 +31,9 @@ This is a simple server and scratchpad development environment. It is fully load
 You are also able to choose from different mixin libraries depending on which preprocesser you chose. Including:  
 
   * Bourbon  
-    * Neat ~~(optional)~~  
-  * ~~Compass~~  
-    * ~~Susy (optional)~~  
+    * Neat (optional)  
+  * Compass  
+    * Susy (optional)  
   * ~~LESS Hat~~  
   * ~~LESS Elements~~  
 
@@ -65,6 +65,12 @@ It will provide you the same options as a Scratchpad application, and build you 
 Run `npm start` to get the server started. It will watch the changes to any core files and reboot the server as needed, it will also watch any frontend files and LiveReload your page as changes are made.
 
 Load up `http://localhost:4000` and see your work!!
+
+## Known Issues
+
+* Rails Env is not fully tested
+* It's opinionated on Require.JS - should require a choice
+* LESS - CSS Libraries not integrated
 
 ## License 
 
