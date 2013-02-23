@@ -53,8 +53,7 @@ if(program.new) {
       if(env != 'rails') {
         chooseCss();
       } else {
-        buildApp();
-        // process.stdin.destroy();
+        buildApp('None');
       }
 
     });
@@ -111,21 +110,18 @@ chooseJs = function(css, cssLib) {
     }
 
     buildPackage = require(tilityDir + '/lib/buildPackage.js');
-    buildPackage.build(css, cssLib, js, projDir);
+    buildPackage.build(css, js, projDir);
 
-    buildApp();
+    buildApp(cssLib);
   });
 }
 
-buildApp = function(){
+buildApp = function(cssLib){
   // load up environment build commands
   envCmds = require(tilityDir + '/lib/' + env + '/tility.js');
 
   // launch build process
-  envCmds.build(tilityDir, projDir, program.new);
-
-  // run wrapup commands
-  defaultCmds.wrapup(projDir);
+  envCmds.build(tilityDir, projDir, program.new, cssLib);
 
   // output runtime directions
   envCmds.output();
